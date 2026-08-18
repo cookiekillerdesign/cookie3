@@ -9,10 +9,13 @@ import { useEffect, useState } from 'react';
  */
 
 const GRID = 8;
-const CELL_MS = 160;   // must match the CSS transition duration on .proj-loader-sq span
-const FILL_MS = 230;   // total time until the last cell is fully visible
-const HOLD_MS = 40;    // brief pause once the square is fully filled
-const FADE_MS = 220;   // overlay fade-out duration
+const CELL_MS = 120;   // must match the CSS transition duration on .proj-loader-sq span
+const FILL_MS = 180;   // total time until the last cell is fully visible
+const HOLD_MS = 0;     // fade starts the instant the fill finishes — no idle
+                        // "fully filled and just sitting there" gap, which is
+                        // what made the fill look done long before the loader
+                        // actually went away
+const FADE_MS = 160;   // overlay fade-out duration
 
 const CELLS = Array.from({ length: GRID * GRID }, (_, i) => {
   const r = Math.floor(i / GRID), c = i % GRID;

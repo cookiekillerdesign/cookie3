@@ -101,7 +101,7 @@ button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
 .proj-loader{position:fixed;inset:0;z-index:9500;display:flex;align-items:center;justify-content:center;background:var(--ink);opacity:1;transition:opacity var(--ease);pointer-events:auto}
 .proj-loader.hide{opacity:0;pointer-events:none}
 .proj-loader-sq{width:clamp(56px,8vw,84px);height:clamp(56px,8vw,84px);display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);gap:clamp(2px,.3vw,3px)}
-.proj-loader-sq span{background:var(--paper);opacity:0;transform:scale(.35);transition:opacity .16s var(--ease),transform .16s var(--ease)}
+.proj-loader-sq span{background:var(--paper);opacity:0;transform:scale(.35);transition:opacity .12s var(--ease),transform .12s var(--ease)}
 .proj-loader-sq.in span{opacity:1;transform:scale(1)}
 @media(prefers-reduced-motion:reduce){.proj-loader{display:none}}
 
