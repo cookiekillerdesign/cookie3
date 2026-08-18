@@ -276,22 +276,10 @@ section{padding:clamp(90px,11vw,170px) var(--pad);position:relative}
 #capabilities{background:var(--ink);color:var(--paper);padding-top:0}
 #capabilities .eyebrow{color:var(--white-60)}
 .deck{display:flex;flex-direction:column;gap:0}
-/* Every sticky card was its own scroll track before (no dedicated dwell
-   space), so it had almost no runway between "arrives" and "gets covered /
-   scrolls away" — cards 2 and 3 hide that because they're always sandwiched
-   under a neighbour, but the first and last card are the only ones whose
-   arrival/release is ever actually visible, so any abruptness there reads
-   as the whole deck "snapping". Wrapping each card in its own taller track
-   gives all four real dwell time. clamp()+vw on purpose, not vh — vh
-   recomputes as a mobile browser's address bar shows/hides mid-scroll,
-   which is the exact "innerHeight jumps mid-scroll" issue the JS loop
-   below is already disabled on touch to avoid; this buffer has to stay
-   stable through that same scroll without relying on JS at all. */
-.deck-track{position:relative;padding-bottom:clamp(60px,14vw,140px)}
 .deck-card{position:sticky;background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:clamp(30px,4vw,56px);min-height:clamp(300px,42vh,420px);display:flex;flex-direction:column;will-change:transform;border-radius:clamp(14px,1.6vw,24px)}
-.deck-track:nth-child(2) .deck-card{background:#E4E2DA}
-.deck-track:nth-child(3) .deck-card{background:var(--cobalt);color:var(--paper);border-color:var(--cobalt)}
-.deck-track:nth-child(4) .deck-card{background:var(--ink);color:var(--paper);border-color:var(--white-30)}
+.deck-card:nth-child(2){background:#E4E2DA}
+.deck-card:nth-child(3){background:var(--cobalt);color:var(--paper);border-color:var(--cobalt)}
+.deck-card:nth-child(4){background:var(--ink);color:var(--paper);border-color:var(--white-30)}
 .deck-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
 .deck-card h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.4vw,46px);letter-spacing:-.015em;margin:auto 0 22px}
 .deck-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}

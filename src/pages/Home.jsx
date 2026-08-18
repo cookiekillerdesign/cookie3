@@ -533,13 +533,8 @@ export default function Home() {
         if (i === cards.length - 1) return;
         const next = cards[i + 1];
         const r = next.getBoundingClientRect();
-        const end = 100 + (i + 1) * 22;
-        // Floors the denominator so short/adaptive viewports (e.g. devtools
-        // responsive mode, still on a real mouse so FINE stays true) can't
-        // shrink it down to where a small scroll delta swings `t` wildly —
-        // that read as the card snapping instead of receding smoothly.
-        const denom = Math.max(innerHeight - end, 240);
-        const t = Math.min(Math.max((innerHeight - r.top) / denom, 0), 1);
+        const start = innerHeight, end = 100 + (i + 1) * 22;
+        const t = Math.min(Math.max((start - r.top) / (start - end), 0), 1);
         c.style.transform = `scale(${1 - t * .06}) translateY(${-t * 8}px)`;
         c.style.filter = `brightness(${1 - t * .15})`;
       });
@@ -796,12 +791,10 @@ export default function Home() {
             <div className="eyebrow reveal">{t.capabilities.eyebrow} <span className="count">{t.capabilities.count}</span></div>
             <div className="deck" id="deck">
               {t.capabilities.decks.map((d, i) => (
-                <div className="deck-track" key={i}>
-                  <div className="deck-card" ref={el => { deckCardsRef.current[i] = el; }}>
-                    <div className="deck-top"><span>{d.top1}</span><span>{d.top2}</span></div>
-                    <h3>{d.h3}</h3>
-                    <ul>{d.items.map((it, j) => <li key={j}>{it}</li>)}</ul>
-                  </div>
+                <div className="deck-card" key={i} ref={el => { deckCardsRef.current[i] = el; }}>
+                  <div className="deck-top"><span>{d.top1}</span><span>{d.top2}</span></div>
+                  <h3>{d.h3}</h3>
+                  <ul>{d.items.map((it, j) => <li key={j}>{it}</li>)}</ul>
                 </div>
               ))}
             </div>
