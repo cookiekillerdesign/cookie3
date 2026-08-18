@@ -143,6 +143,9 @@ header.hide{transform:translateY(-110%)}
 .menu.open~.menu-close{opacity:1;pointer-events:auto;transition:opacity .35s var(--ease) .3s}
 .menu-close:hover{background:var(--paper);color:var(--ink)}
 .menu-links{display:flex;flex-direction:column;gap:clamp(10px,1.8vw,30px)}
+/* keeps long nav words (especially RU/RO) from running under the hover
+   preview panel on the right, at the same width where that panel appears */
+@media(min-width:901px){.menu-links{max-width:52%}}
 .menu-links a{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(38px,7.5vw,88px);line-height:1.06;letter-spacing:-.015em;display:flex;align-items:baseline;gap:22px;width:fit-content;opacity:0;transform:translateY(40px);transition:opacity .6s var(--ease),transform .6s var(--ease),color .18s ease}
 .menu.open .menu-links a{opacity:1;transform:none}
 .menu-links a:hover{color:var(--cobalt)}
@@ -155,7 +158,8 @@ header.hide{transform:translateY(-110%)}
 .menu-preview-eyebrow{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobalt);margin-top:16px}
 .menu-preview-desc{font-family:var(--body);font-weight:500;font-size:clamp(15px,1.35vw,19px);line-height:1.6;color:var(--white-60);max-width:360px;margin-top:10px}
 @media(max-width:900px){.menu-preview{display:none}}
-.menu-status{position:fixed;top:24px;left:var(--pad);z-index:8600;display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--white-60);opacity:0;pointer-events:none;transition:opacity .3s .3s}
+.menu-status{position:fixed;top:24px;left:var(--pad);z-index:8600;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(10px,2vw,22px);row-gap:6px;font-family:var(--mono);font-size:clamp(9.5px,1.1vw,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--white-60);opacity:0;pointer-events:none;transition:opacity .3s .3s}
+.menu-status span{white-space:nowrap}
 .menu.open~.menu-status{opacity:1}
 @media(max-width:760px){.menu-status{display:none}}
 .menu-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--white-60)}
@@ -184,6 +188,10 @@ header.hide{transform:translateY(-110%)}
 /* Russian title has a long unbroken word (ПРОФЕССИОНАЛЬНО) — scale it down a touch so it never reaches the pixel-heart particles on the right */
 html[lang="ru"] .hero-title{font-size:clamp(32px,7.6vw,110px)}
 html[lang="ro"] .hero-title{font-size:clamp(34px,7.6vw,118px)}
+/* longer average word length in these languages, at this display-weight
+   type scale, is what was running the nav labels into the hover-preview
+   panel next to them (see .menu-links max-width above) */
+html[lang="ru"] .menu-links a,html[lang="ro"] .menu-links a{font-size:clamp(34px,6.6vw,74px)}
 .hero-sub{max-width:580px;margin:28px 0 0;font-size:clamp(16px,1.5vw,20px);font-weight:500;color:var(--ink-60)}
 .hero-sub b{color:var(--ink)}
 
@@ -268,10 +276,22 @@ section{padding:clamp(90px,11vw,170px) var(--pad);position:relative}
 #capabilities{background:var(--ink);color:var(--paper);padding-top:0}
 #capabilities .eyebrow{color:var(--white-60)}
 .deck{display:flex;flex-direction:column;gap:0}
+/* Every sticky card was its own scroll track before (no dedicated dwell
+   space), so it had almost no runway between "arrives" and "gets covered /
+   scrolls away" — cards 2 and 3 hide that because they're always sandwiched
+   under a neighbour, but the first and last card are the only ones whose
+   arrival/release is ever actually visible, so any abruptness there reads
+   as the whole deck "snapping". Wrapping each card in its own taller track
+   gives all four real dwell time. clamp()+vw on purpose, not vh — vh
+   recomputes as a mobile browser's address bar shows/hides mid-scroll,
+   which is the exact "innerHeight jumps mid-scroll" issue the JS loop
+   below is already disabled on touch to avoid; this buffer has to stay
+   stable through that same scroll without relying on JS at all. */
+.deck-track{position:relative;padding-bottom:clamp(60px,14vw,140px)}
 .deck-card{position:sticky;background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:clamp(30px,4vw,56px);min-height:clamp(300px,42vh,420px);display:flex;flex-direction:column;will-change:transform;border-radius:clamp(14px,1.6vw,24px)}
-.deck-card:nth-child(2){background:#E4E2DA}
-.deck-card:nth-child(3){background:var(--cobalt);color:var(--paper);border-color:var(--cobalt)}
-.deck-card:nth-child(4){background:var(--ink);color:var(--paper);border-color:var(--white-30)}
+.deck-track:nth-child(2) .deck-card{background:#E4E2DA}
+.deck-track:nth-child(3) .deck-card{background:var(--cobalt);color:var(--paper);border-color:var(--cobalt)}
+.deck-track:nth-child(4) .deck-card{background:var(--ink);color:var(--paper);border-color:var(--white-30)}
 .deck-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
 .deck-card h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.4vw,46px);letter-spacing:-.015em;margin:auto 0 22px}
 .deck-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
@@ -353,7 +373,7 @@ footer{background:var(--ink);color:var(--paper);padding:clamp(90px,11vw,160px) v
 .foot-links a{position:relative;padding:4px 0;display:inline-flex;align-items:center;gap:7px}
 .foot-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--cobalt);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
 .foot-links a:hover::after{transform:scaleX(1);transform-origin:left}
-.foot-fine{font-family:var(--mono);font-size:11px;color:var(--white-30);letter-spacing:.1em;display:flex;align-items:center;gap:10px}
+.foot-fine{font-family:var(--mono);font-size:11px;color:var(--white-30);letter-spacing:.1em;display:flex;flex-wrap:wrap;align-items:center;row-gap:6px;gap:10px}
 .foot-fine .pxheart{font-size:13px;color:var(--cobalt)}
 .foot-watermark{position:absolute;left:0;right:0;bottom:-2.2vw;z-index:0;font-family:var(--display);font-weight:900;font-size:14.6vw;line-height:1;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(241,240,236,.07);pointer-events:none;white-space:nowrap;text-align:center;user-select:none}
 

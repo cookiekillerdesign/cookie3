@@ -296,7 +296,7 @@ const ru = {
     notFoundCta: 'В портфолио'
   },
   caseStudy: {
-    eyebrowLabel: 'Кейс-стади', category: 'Брендинг и логотипы',
+    eyebrowLabel: 'Кейс', category: 'Брендинг и логотипы',
     scopeValue: '13 знаков · полное портфолио', fullSet: 'Всё портфолио',
     allLabel: 'Все 13', clickHint: 'Клик — переход к проекту',
     items: [
@@ -339,8 +339,8 @@ const ru = {
   experience: {
     eyebrow: 'Опыт', count: '2018 → сейчас',
     rows: [
-      { when: 'Июнь 2024 — по наст. время', now: true, role: 'Senior UX/UI и продуктовый дизайнер', org: 'Zazitex SRL', desc: 'End-to-end UX/UI для e-commerce платформ и внутренних систем. Спроектировал закрытую CRM-логику с нуля — модели данных, навигация, ролевой доступ для 50+ пользователей. Снизил трение в чекауте за счёт реструктуризации IA и прогрессивного раскрытия информации. Менторю джунов, провожу UX-воркшопы.' },
-      { when: 'Июнь 2024 — по наст. время', now: true, role: 'Преподаватель UX/UI дизайна', org: 'IT STEP Academy', desc: 'Преподаю UX/UI дизайн, дизайн-мышление и продуктовую стратегию. Провожу студентов через research, прототипирование и юзабилити-тестирование на реальных клиентских проектах.' },
+      { when: 'Июнь 2024 — сейчас', now: true, role: 'Senior UX/UI и продуктовый дизайнер', org: 'Zazitex SRL', desc: 'End-to-end UX/UI для e-commerce платформ и внутренних систем. Спроектировал закрытую CRM-логику с нуля — модели данных, навигация, ролевой доступ для 50+ пользователей. Снизил трение в чекауте за счёт реструктуризации IA и прогрессивного раскрытия информации. Менторю джунов, провожу UX-воркшопы.' },
+      { when: 'Июнь 2024 — сейчас', now: true, role: 'Преподаватель UX/UI дизайна', org: 'IT STEP Academy', desc: 'Преподаю UX/UI дизайн, дизайн-мышление и продуктовую стратегию. Провожу студентов через research, прототипирование и юзабилити-тестирование на реальных клиентских проектах.' },
       { when: 'Дек 2022 — Янв 2024', now: false, role: 'Middle UX/UI дизайнер', org: 'Yucatech Software SRL · Hostry.com · Lycaste.com', desc: 'Редизайн основных e-commerce флоу, улучшение онбординга и снижение оттока на ключевых точках конверсии. Построил мультиплатформенную дизайн-систему (web + iOS + Android) для 3 продуктов. Выпустил VPN-приложение: онбординг, архитектура настроек, флоу подписки.' },
       { when: 'Дек 2021 — Дек 2022', now: false, role: 'Middle графический дизайнер', org: 'Art Poligraf SRL', desc: 'Айдентика и упаковка для клиентов на рынках Молдовы и ЕС; визуальные коммуникации в print и digital кампаниях.' },
       { when: '2018 — 2021', now: false, role: 'Junior графический дизайнер', org: 'Sonaris-com Advertising Agency · Freelance', desc: 'Айдентика и digital-реклама для 20+ малых компаний и стартапов; UI-макеты для e-commerce продуктов на раннем этапе.' }
@@ -423,7 +423,7 @@ const ro = {
     notFoundCta: 'Către portofoliu'
   },
   caseStudy: {
-    eyebrowLabel: 'Studiu de caz', category: 'Branding & Design de Logo',
+    eyebrowLabel: 'Studiu de caz', category: 'Branding & Logo-uri',
     scopeValue: '13 mărci · folio complet', fullSet: 'Setul complet',
     allLabel: 'Toate cele 13', clickHint: 'Click pentru a sări la proiect',
     items: [
@@ -446,12 +446,12 @@ const ro = {
   about: {
     eyebrow: 'Despre mine', count: 'Pe scurt',
     statementPre: 'Design-ul nu e decorație. E ',
-    statementEm: 'logică pe care poți da click',
+    statementEm: 'logică pe care o accesezi cu un click',
     statementPost: ' — și o construiesc integral: research, sisteme, prototipuri, livrare.',
-    p1Pre: 'Mă specializez pe produse unde fluxurile sunt complicate, iar mizele sunt reale: ',
+    p1Pre: 'Mă specializez în produse unde fluxurile sunt complicate, iar mizele sunt reale: ',
     p1Bold: 'platforme bancare, sănătate, marketplace-uri, sisteme CRM închise pentru 50+ utilizatori interni.',
     p2: 'Ziua livrez produse la Zazitex. Seara predau UX/UI Design, Design Thinking și Product Strategy la IT STEP Academy — pentru că atunci când explic design-ul cu voce tare, îmi țin gândirea onestă.',
-    p3: 'Engleză B2 · Rusă maternă · Română fluent.',
+    p3: 'Engleză B2 · Rusă maternă · Română fluentă.',
     stats: ['Ani în product design', 'Produse livrate', 'Branduri create', 'Certificări Adobe']
   },
   capabilities: {
